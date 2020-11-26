@@ -1,6 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 export default (req, res) => {
-  res.statusCode = 200
-  res.json({ name: 'John Doe' })
+  res.send(users)
 }
+
+const users= [
+  {name: "Prakash Acharya", occupation: "Software Engineer", age: 23, location: "San Frasncisco"}
+]
