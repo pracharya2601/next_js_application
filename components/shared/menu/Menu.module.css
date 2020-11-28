@@ -1,0 +1,77 @@
+.menu__icon_container {
+    display:block;
+    position: relative;
+    height: 40px;
+    width: 40px;
+  }
+.menu__icon {
+    height: 40px;
+    margin: 15px 0;
+    padding: 5px;
+    border-radius: 5px;
+    background:rgba(155, 153, 153, 0.5);
+  }
+
+.menu__bar{
+    z-index: 500;
+    position: absolute;
+    top:70px;
+    right: 0;
+    width: 0;
+    height: 0;
+    overflow-x: hidden;
+    overflow-y:auto;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    background: var(--background-beta);
+    transition: all 0.5s;
+    transition-timing-function: linear;
+  }
+  
+.menu__bar_open {
+    z-index: 500;
+    position: absolute;
+    top:70px;
+    right: 0;
+    width: 0;
+    height: 0;
+    overflow-x: hidden;
+    overflow-y:auto;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    background: var(--background-beta);
+    /* animation: menu_animation;
+    animation-duration: 2s; */
+    transition: all 0.5s;
+    transition-timing-function: linear;
+}
+
+.activate.menu__bar_open {
+    width: 300px;
+    height: 30vh;
+}
+
+
+
+.menu__list_button {
+    font-size: 18px;
+    padding: 10px 20px; 
+    width: 100%;
+    margin: 0;
+    display: block;
+    border: none;
+    text-align: right;
+    cursor:pointer;
+    background: var(--background-beta);
+    color: var(--text-beta);
+  }
+  .menu__list_button:hover {
+    -moz-box-shadow:    inset 0 0 3px #000000;
+    -webkit-box-shadow: inset 0 0 3px #000000;
+    box-shadow:         inset 0 0 3px #000000;
+  }
+  .menu__list_buttonbutton:focus {
+    outline: none;
+  }
