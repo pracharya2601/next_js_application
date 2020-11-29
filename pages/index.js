@@ -1,6 +1,8 @@
 import {useContext, useState} from 'react';
 import fetch from 'isomorphic-unfetch';
 
+import {Router, useRouter} from 'next/router';
+
 import {themeContext} from '../context/ThemeProvider';
 
 //navbar
@@ -9,8 +11,11 @@ import Navbar from '../components/Navbar';
 import View from '../components/view';
 import Button from '../components/button';
 
-export default function Home({data}) {
+//activelink
+import ActiveLink from '../components/shared/activelink';
 
+export default function Home({data}) {
+  const router = useRouter();
   const [show, notShow] = useState(false);
   const {theme, themeChange} = useContext(themeContext);
   console.log(data[0].name)
@@ -20,6 +25,7 @@ export default function Home({data}) {
       <main>
         <h2 style={{color: 'var(--color-red'}} onMouseEnter={() => notShow(!show)}>{show ? "hello" : "Not Hello"}</h2>
         <h2 style={{color: 'var(--color-red'}}>{theme}</h2>
+
         <Button onClick={() => themeChange()} title={`${theme} theme`} custonclass={"red bgblue small"}/>
       </main>
 

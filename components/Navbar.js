@@ -1,9 +1,12 @@
+import {useState} from 'react';
 import Head from 'next/head';
 import Menu from './shared/menu';
+import MenuItem from './shared/menu/MenuItem';
 import navbar_style from './Navbar.module.css';
 
 
 const Navbar = ({title, imageLink}) => {
+  const [isOpen, setIsOpen] = useState(false)
   return(
     <>
       <Head>
@@ -17,8 +20,12 @@ const Navbar = ({title, imageLink}) => {
           <li className={navbar_style.nav_items}>About</li>
           <li className={navbar_style.nav_items}>Contact</li>
           <li className={navbar_style.nav_items}>Portfolio</li>
-          <li className={navbar_style.nav_items}>
-            <Menu/>
+          <li className={navbar_style.nav_items} onClick={() => setIsOpen(!isOpen)}>
+            <Menu open={isOpen}>
+              <MenuItem>Hello</MenuItem>
+              <MenuItem>Prakash</MenuItem>
+              <MenuItem>Something</MenuItem>
+            </Menu>
           </li>
         </ul>
       </header>

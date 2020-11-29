@@ -42,8 +42,6 @@
     -webkit-box-shadow: 0 0 5px#888;
     box-shadow: 0 0 5px #888;
     background: var(--background-beta);
-    /* animation: menu_animation;
-    animation-duration: 2s; */
     transition: all 0.5s;
     transition-timing-function: linear;
 }
