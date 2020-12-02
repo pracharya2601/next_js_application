@@ -1,19 +1,25 @@
 .menu__icon_container {
-    display:block;
-    position: relative;
-    height: 40px;
-    width: 40px;
-  }
+  display:block;
+  position: relative;
+  height: 40px;
+  width: 40px;
+}
 .menu__icon {
-    height: 40px;
-    margin: 15px 0;
-    padding: 5px;
-    border-radius: 5px;
-    background:rgba(155, 153, 153, 0.5);
-  }
+  height: 40px;
+  margin: 15px 0;
+  padding: 5px;
+  border-radius: 5px;
+  background: white;
+}
+
+.menu__icon:hover {
+  -webkit-box-shadow: 0 0 5px 2px var( --text-beta);
+  -moz-box-shadow: 0 0 5px 2px var( --text-beta);
+  box-shadow: 0 0 5px 2px var(--text-beta);
+}
 
 .menu__bar{
-    z-index: 500;
+    z-index: 2000;
     position: absolute;
     top:70px;
     right: 0;
@@ -21,16 +27,16 @@
     height: 0;
     overflow-x: hidden;
     overflow-y:auto;
-    -moz-box-shadow: 0 0 5px #888;
-    -webkit-box-shadow: 0 0 5px#888;
-    box-shadow: 0 0 5px #888;
+    -moz-box-shadow: 0 0 5px var( --text-beta);
+    -webkit-box-shadow: 0 0 5pxvar( --text-beta);
+    box-shadow: 0 0 5px var( --text-beta);
     background: var(--background-beta);
     transition: all 0.5s;
     transition-timing-function: linear;
   }
   
 .menu__bar_open {
-    z-index: 500;
+    z-index: 2000;
     position: absolute;
     top:70px;
     right: 0;

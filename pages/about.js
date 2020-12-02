@@ -1,9 +1,11 @@
-
 import View from '../components/view';
+//navbar
+import Navbar from '../components/Navbar';
 const About = () => {
     return (
         <View>
-          <h1>Hello world</h1>  
+          <Navbar title="About-Cocoon Tech Lab" imageLink="/logo.svg" />
+          <h1>About Page</h1>  
         </View>
     )
 }

@@ -1,7 +1,6 @@
 import {useContext, useState} from 'react';
 import fetch from 'isomorphic-unfetch';
 
-import {Router, useRouter} from 'next/router';
 
 import {themeContext} from '../context/ThemeProvider';
 
@@ -10,27 +9,29 @@ import Navbar from '../components/Navbar';
 //view
 import View from '../components/view';
 import Button from '../components/button';
+import Footer from '../components/footer';
+
+//caurosel
+import Caurosel from '../components/shared/caurosel';
 
 //activelink
 import ActiveLink from '../components/shared/activelink';
 
 export default function Home({data}) {
-  const router = useRouter();
-  const [show, notShow] = useState(false);
   const {theme, themeChange} = useContext(themeContext);
-  console.log(data[0].name)
   return (
       <View>
-      <Navbar title="Prakash Acharya" imageLink="/favicon.ico" />
+      <Navbar title="Cocoon Tech Lab" imageLink="/logo.svg" />
       <main>
-        <h2 style={{color: 'var(--color-red'}} onMouseEnter={() => notShow(!show)}>{show ? "hello" : "Not Hello"}</h2>
-        <h2 style={{color: 'var(--color-red'}}>{theme}</h2>
-
+        <Caurosel />
+        <div style={{minHeight: '70vh'}}></div>
+        <div style={{minHeight: '70vh'}}></div>
+        <div style={{minHeight: '70vh'}}></div>
+        <div style={{minHeight: '70vh'}}></div>
         <Button onClick={() => themeChange()} title={`${theme} theme`} custonclass={"red bgblue small"}/>
       </main>
 
-      <footer>
-      </footer>
+      <Footer />
       </View>
   )
 }

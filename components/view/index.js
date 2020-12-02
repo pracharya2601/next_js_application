@@ -3,27 +3,26 @@ import {themeContext} from '../../context/ThemeProvider';
 
 const View = ({children}) => {
   const {theme} = useContext(themeContext);
-  console.log(theme);
   return (
     <div className={`container  ${theme == "dark" ? 'theme_dark' : 'theme_light' } `}>
       {children}
       <style jsx>
         {`
         :root {
-          --text-alpha: rgb(26, 26, 26);
-          --text-beta: rgb(51, 49, 63);
+          --text-alpha: #14182b;
+          --text-beta: #2c2f40;
         
-          --background-alpha: rgb(255, 255, 255);
-          --background-beta: rgb(182, 182, 182);
+          --background-alpha: #ffffff;
+          --background-beta: #ededed;
         
           --color-red: rgb(219, 0, 0);
         }
         .theme_dark {
-          --background-alpha: rgb(26, 26, 26);
-          --background-beta: rgb(51, 49, 63);
+          --background-alpha: #14182b;
+          --background-beta: #2c2f40;
         
-          --text-alpha: rgb(255, 255, 255);
-          --text-beta: rgb(182, 182, 182);
+          --text-alpha: #ffffff;
+          --text-beta: #ededed;
         
           --color-red: rgb(255, 162, 162);
         }
@@ -37,15 +36,13 @@ const View = ({children}) => {
           width: 100%;
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
+          flex: 1;
+          min-height: 100vh;
           // background-color: rgb(255, 255, 255);
           // color: rgb(26, 26, 26);
           background-color: var(--background-alpha);
           color: var(--text-alpha);
           position: relative;
-          overflow-x: hidden;
-          overflow-y:auto;
         }
 
         

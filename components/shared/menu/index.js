@@ -11,7 +11,6 @@ const Menu = ({children}) => {
     setActive(true);
     setOpen(!open);
   }
-  console.log(active);
   return(
     <div className={menu_style.menu__icon_container} >
      {!open ? <img onClick={clickHandle} className={menu_style.menu__icon} src="/right-menu-bars.svg" alt="nav-menu"/> :
