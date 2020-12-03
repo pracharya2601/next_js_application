@@ -1,5 +1,5 @@
 .header {
-    position: sticky;
+    position: relative;
     height: 70px;
     line-height: 70px;
     padding: 0 20px 0 20px;
@@ -19,6 +19,7 @@
     display: flex;
     list-style: none;
     display: flex;
+    position: static;
   }
 .nav_items {
   padding: 0 20px;
@@ -27,16 +28,19 @@
   font-weight: 600;
   display: none;
   filter: brightness(0.8);
+  z-index: 1000;
 }
 
 .active_nav_items.nav_items {
-  border-bottom: 5px solid var( --text-alpha);
+  border-bottom: 2px solid var(--text-lamda);
   filter: brightness(1);
 
 }
 
 .nav_items:last-child {
   display:block;
+  position: relative;
+  padding: 0;
 }
 .nav_items:last-child:hover {
   box-shadow: none;

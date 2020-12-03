@@ -11,18 +11,22 @@ const View = ({children}) => {
         :root {
           --text-alpha: #14182b;
           --text-beta: #2c2f40;
+          --text-lamda: #5e5e5e;
         
           --background-alpha: #ffffff;
           --background-beta: #ededed;
+          --background-lamda: #c9c9c9;
         
           --color-red: rgb(219, 0, 0);
         }
         .theme_dark {
           --background-alpha: #14182b;
           --background-beta: #2c2f40;
+          --background-lamda: #5e5e5e;
         
           --text-alpha: #ffffff;
           --text-beta: #ededed;
+          --text-lamda: #c9c9c9;
         
           --color-red: rgb(255, 162, 162);
         }
@@ -43,22 +47,10 @@ const View = ({children}) => {
           background-color: var(--background-alpha);
           color: var(--text-alpha);
           position: relative;
+          zindex: 100;
         }
-
-        
-        // .theme_light {
-        //   --text-alpha: rgb(26, 26, 26);
-        //   --text-beta: rgb(51, 49, 63);
-        
-        //   --background-alpha: rgb(255, 255, 255);
-        //   --background-beta: rgb(182, 182, 182);
-        
-        //   --color-red: rgb(219, 0, 0);
-        // }
-
-        .theme_dark {
-          background-color: var(--background-alpha);
-          color: var(--text-alpha);
+        .container::-webkit-scrollbar {
+          display: none;
         }
 
         `}

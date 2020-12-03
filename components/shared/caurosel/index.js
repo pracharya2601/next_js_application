@@ -1,50 +1,58 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import caurosel_style from './caurosel.module.css';
-import Image from 'next/image';
 
 
 
-const Caurosel = () => {
+const Caurosel = ({autoSlide, showDot, children}) => {
     const [active, setActive] = useState(0);
-    const imgs = [
-        {src: "/image_1.jpg"},
-        {src: "/image_2.jpg"},
-        {src: "/image_3.webp"},
-    ]
     const leftArrow = () => {
         if(active == 0) {
-            setActive(imgs.length - 1);
+            setActive(children.length - 1);
         }
         else setActive(active-1);
     }
 
     const rightArrow = () => {
-        if(active == imgs.length-1) {
+        if(active == children.length-1) {
             setActive(0)
         }
         else setActive(active + 1);
     }
+    
+    useEffect(() => {
+        const auto = setTimeout(() => {
+            autoSlide ? rightArrow() : null
+        }, autoSlide ? autoSlide : null);
 
+        return () => {
+            clearTimeout(auto);
+        };
+    }, [active]);
     return (
         <aside className={caurosel_style.caurosel_image_container}>
-            {imgs.map((img, index) => (
-                <div className={[caurosel_style.caurosel_image, index == active ? caurosel_style.active_image : null].join(" ")} key={img.src}>
-                <img
-                    src={img.src}
-                    alt="image"
-                    height="100%"
-                    width="100%"
-                    style={{objectFit: 'cover', zIndex: 200}}
-                />
+            {children.map((image, index) => (
+                <div key={index} className={[caurosel_style.caurosel_image, index == active ? caurosel_style.active_image : null].join(" ")} >
+                    {image}
+                    {image.props.content && <div className={caurosel_style.ontop_heading_image}>{image.props.content}</div>}
                 </div>
             ))}
-            <button onClick={leftArrow}>
-                left
-            </button>
-            <button onClick={rightArrow}>
-                right
-            </button>
-
+            {  showDot &&          
+            <div className={caurosel_style.dot_container}>
+                {children.map((image, index) => (
+                    <div  
+                        key={index} 
+                        onClick={() => setActive(index)}
+                        className={[caurosel_style.caurosel_image_dot, index == active ? caurosel_style.active_image_dot : null].join(" ")}
+                    />
+                ))}
+            </div>
+            }
+            <div className={[caurosel_style.arrow_button, caurosel_style.left_arrow].join(" ")} onClick={leftArrow}>
+                {"<"}
+            </div>
+            <div className={[caurosel_style.arrow_button, caurosel_style.right_arrow].join(" ")}  onClick={rightArrow}>
+                {">"}
+            </div>
         </aside>
     )
 }
