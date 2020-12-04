@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import caurosel_style from './caurosel.module.css';
 
 
@@ -30,7 +30,7 @@ const Caurosel = ({autoSlide, showDot, children}) => {
     }, [active]);
     return (
         <aside className={caurosel_style.caurosel_image_container}>
-            {children.map((image, index) => (
+            {children && React.Children.toArray(children).map((image, index) => (
                 <div key={index} className={[caurosel_style.caurosel_image, index == active ? caurosel_style.active_image : null].join(" ")} >
                     {image}
                     {image.props.content && <div className={caurosel_style.ontop_heading_image}>{image.props.content}</div>}
@@ -38,7 +38,7 @@ const Caurosel = ({autoSlide, showDot, children}) => {
             ))}
             {  showDot &&          
             <div className={caurosel_style.dot_container}>
-                {children.map((image, index) => (
+                {children && React.Children.toArray(children).map((image, index) => (
                     <div  
                         key={index} 
                         onClick={() => setActive(index)}
