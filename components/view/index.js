@@ -8,17 +8,6 @@ const View = ({children}) => {
       {children}
       <style jsx>
         {`
-        :root {
-          --text-alpha: #14182b;
-          --text-beta: #2c2f40;
-          --text-lamda: #5e5e5e;
-        
-          --background-alpha: #ffffff;
-          --background-beta: #ededed;
-          --background-lamda: #c9c9c9;
-        
-          --color-red: rgb(219, 0, 0);
-        }
         .theme_dark {
           --background-alpha: #14182b;
           --background-beta: #2c2f40;

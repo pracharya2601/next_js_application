@@ -1,0 +1,14 @@
+.h1 {
+    font-size: var(--font-h1);
+    padding: 2px 0 2px 0;
+}
+
+.h2 {
+    font-size: var(--font-h2);
+    padding: 2px 0 2px 0;
+}
+
+.p {
+    font-size: var(--font-p);
+    padding: 0 2px 0 2px;
+}
