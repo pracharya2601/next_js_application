@@ -17,7 +17,7 @@ const navItems = [
 const Navbar = ({title, imageLink}) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const [customPath, setCustomPath] = useState(router.pathname);
+  const [customPath] = useState(router.pathname);
   return(
     <>
       <Head>

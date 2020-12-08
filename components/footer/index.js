@@ -1,5 +1,5 @@
 import footer_style from './footer.module.css';
-const Footer = () => {
+const Footer = ({children}) => {
     return (
         <footer className={footer_style.footer}>
             <div>
@@ -7,6 +7,9 @@ const Footer = () => {
             </div>
             <div>
                 Other Item goes here
+            </div>
+            <div>
+                {children}
             </div>
         </footer>
     )

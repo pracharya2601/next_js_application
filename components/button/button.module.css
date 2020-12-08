@@ -1,0 +1,94 @@
+.button {
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+    opacity: 1;
+}
+.button:hover {
+    /* opacity: 0.7; */
+}
+.button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.button.size_md {
+    padding: calc(var(--font-p)* 0.5) calc(var(--font-h1)*0.65);
+    font-size: calc(var(--font-p)*0.95);
+}
+
+.button.size_sm {
+    padding: calc(var(--font-p)* 0.3) calc(var(--font-h1)*0.4);
+    font-size: calc(var(--font-p)*0.85);
+}
+
+.button.size_lg {
+    padding: calc(var(--font-p)* 0.7) calc(var(--font-h1)*0.90);
+    font-size: calc(var(--font-p)*1.2);
+}
+
+.button.color_primary {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border: 2px solid var(--color-primary);
+}
+
+.button.color_primary.type_outline {
+    background-color: transparent;
+    color:  var(--color-primary);
+}
+
+.button.color_secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    border: 2px solid var(--color-secondary);
+}
+
+.button.color_secondary.type_outline {
+    background-color: transparent;
+    color:  var(--color-secondary);
+}
+
+.button.color_red {
+    background-color: var(--color-red);
+    color: var(--color-secondary);
+    border: 2px solid var(--color-red);
+}
+
+.button.color_red.type_outline {
+    background-color: transparent;
+    color:  var(--color-red);
+}
+.button.color_green {
+    background-color: var(--color-green);
+    color: var(--color-secondary);
+    border: 2px solid var(--color-green);
+}
+
+.button.color_green.type_outline {
+    background-color: transparent;
+    color:  var(--color-green);
+}
+.button.color_warning {
+    background-color: var(--color-warning);
+    color: var(--color-secondary);
+    border: 2px solid var(--color-warning);
+}
+
+.button.color_warning.type_outline {
+    background-color: transparent;
+    color:  var(--color-warning);
+}
+.button.color_default {
+    background-color: var(--color-default);
+    color: var(--color-dark);
+    border: 2px solid var(--color-default);
+}
+
+.button.color_default.type_outline {
+    background-color: transparent;
+    color:  var(--color-default);
+}

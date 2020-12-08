@@ -1,28 +1,17 @@
-const Button = ({title, custonclass, onClick}) => {
+import button_styles from './button.module.css'
+const Button = ({title, onClick, size, color, outline, loading}) => {
   return (
-    <button className={`button ${custonclass}`} onClick={onClick} >
+    <button 
+      onClick={onClick} 
+      className={[
+        button_styles.button,
+        button_styles[`size_${size ? size : 'md'}`], 
+        button_styles[`color_${color ? color: 'primary'}`],
+        button_styles[`type_${outline ? "outline" : 'cover'}`]
+      ].join(" ")}
+    
+    >
       {title}
-      <style jsx>
-        {
-          `
-          .button {
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            position: relative;
-          }
-          .button:hover {
-            opacity: 0.7;
-          }
-          .button:focus {
-            outline: none;
-            box-shadow: none;
-          }
-          `
-        }
-      </style>
     </button>
   )
 }

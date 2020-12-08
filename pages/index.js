@@ -28,6 +28,8 @@ import Typography from '../components/shared/typography';
 //active link
 import ActiveLink from '../components/shared/activelink';
 
+import Loading from '../components/shared/loading';
+
 
 
 export default function Home({data}) {
@@ -82,8 +84,10 @@ export default function Home({data}) {
           </ActiveLink>
         </Box>
       </Box>
-        <Button onClick={() => themeChange()} title={`${theme} theme`} custonclass={"red bgblue small"}/>
-      <Footer />
+      <Footer>
+      <Button onClick={() => themeChange()} title={`${theme}`} color="red" outline loading/>
+      <Loading type="spinner" size={100}/>
+      </Footer>
       </View>
   )
 }

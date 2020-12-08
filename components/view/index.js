@@ -17,7 +17,6 @@ const View = ({children}) => {
           --text-beta: #ededed;
           --text-lamda: #c9c9c9;
         
-          --color-red: rgb(255, 162, 162);
         }
         .container {
           box-sizing:border-box;
