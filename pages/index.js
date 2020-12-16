@@ -1,104 +1,118 @@
-import {useContext, useState} from 'react';
-import {useRouter} from 'next/router';
-import fetch from 'isomorphic-unfetch';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+
+import Cookies from 'cookies'
 
 
-import {themeContext} from '../context/ThemeProvider';
-
-//navbar
-import Navbar from '../components/Navbar';
-//view
-import View from '../components/view';
-import Button from '../components/button';
-import Footer from '../components/footer';
-
-//caurosel
-import Caurosel from '../components/shared/caurosel';
-//grid
-import Grid from '../components/shared/grid';
-
-//avatar component
-import Avatar from '../components/shared/avatar';
-
-//box component
-import Box from '../components/shared/box';
-
-//typography
-import Typography from '../components/shared/typography';
-//active link
-import ActiveLink from '../components/shared/activelink';
-
-import Loading from '../components/shared/loading';
-
-
-
-export default function Home({data}) {
-  const {theme, themeChange} = useContext(themeContext);
-  const router = useRouter();
+const Home = (props) => {
+const { updateTheme } = props;
+// console.log(document.cookies)
+console.log(props)
   return (
-      <View>
-      <Navbar title="Cocoon Tech Lab" imageLink="/logo.svg" />
-      <Box style={{maxHeight: "60vh", height: "60vh", width: "100vw"}}>
-        <Caurosel showDot autoSlide="4000">
-          <img src="/image_1.jpg" alt="Image one sdkjshdsh aksjksjdksd alkdjlksdjsd skljslkdjs sdkjslkdj "/>
-          <img src="/image_2.jpg" alt="Image two"/>
-          <img src="/image_3.jpg" alt="Image three"/>
-        </Caurosel>
-      </Box>
-      <Box style={box}>
-        <Grid container gap={3}>
-          <Grid sm={12} md={6} lg={4}>
-            <Box style={sub_box} >
-              <Typography style={{color: "var(--color-red)"}} type="h1"  marginBottom="5px">For Farmer</Typography>
-              <Typography type="p" marginBottom="20px">Scientific research and other primary goal</Typography>
-              <Avatar src="/image_1.jpg" alt="first image" size={300}/>
-            </Box>
-          </Grid>
-          <Grid sm={12} md={6} lg={4}>
-            <Box style={sub_box} >
-              <Typography type="h1"  marginBottom="5px">For Farmer</Typography>
-              <Typography type="p" marginBottom="20px">Scientific research and other primary goal</Typography>
-              <Avatar src="/image_1.jpg" alt="first image" size={300} />
-            </Box>
-          </Grid>
-          <Grid sm={12} md={6} lg={4}>
-            <Box style={sub_box} >
-              <Typography type="h1"  marginBottom="20px">For Farmer</Typography>
-              <Typography type="p" marginBottom="20px">Scientific research and other primary goal</Typography>
-              <Avatar src="/image_1.jpg" alt="first image" size={300} />
-            </Box>
-          </Grid>
-        </Grid>
-      </Box>
-      <Box style={box}>
-        <Box style={sub_box_second}>
-          <Typography type="h1" textAlign="center" >
-            About Cocoon Tech Lab
-          </Typography>
-          <Typography type="p" textAlign="center" margin="15px 0 ">
-          I guess we could discuss the implications of the phrase "meant to be." That is if we wanted to drown ourselves in a sea of backwardly referential semantics and other mumbo-jumbo. Maybe such a discussion would result in the determination that "meant to be" is exactly as meaningless a phrase as it seems to be, and that none of us is actually meant to be doing anything at all. But that's my existential underpants underpinnings showing. It's the way the cookie crumbles. And now I want a cookie
-          </Typography>
-          
-          <ActiveLink href="/about">
-            Learn more about us
-          </ActiveLink>
-        </Box>
-      </Box>
-      <Footer>
-      <Button onClick={() => themeChange()} title={`${theme}`} color="red" outline loading/>
-      <Loading type="spinner" size={100}/>
-      </Footer>
-      </View>
-  )
+    <StyledPage>
+      <Heading>Select a color to update the theme</Heading>
+      <ButtonContainer>
+        <Button
+          onClick={() =>
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "purple",
+              pageFontColor: "black",
+              pageFontHoverColor: "red"
+            })
+          }
+        >
+          purple
+        </Button>
+        <Button
+          onClick={() =>
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "green",
+              pageFontColor: "white",
+              pageFontHoverColor: "teal"
+            })
+          }
+        >
+          green
+        </Button>
+        <Button onClick={() => updateTheme({})}>reset</Button>
+      </ButtonContainer>
+    </StyledPage>
+    )
 }
 
-const sub_box = {display: "flex", flexDirection: 'column', justifyContent: "center", textAlign : 'center'}
-const sub_box_second = {display: "flex", flexDirection: 'column', justifyContent: "center", textAlign : 'center', boxShadow: 'var(--box-shadow_1)', margin: "0 auto", maxWidth: '70vw', minWidth: '300px', padding: '10vh 5vw', borderRadius: '10px'};
-const box = {width: "100vw", display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '5vh 0 5vh 0'};
-Home.getInitialProps = async () => {
-  let res = await fetch('http://localhost:3000/api/hello');
-  let data = await res.json()
-  return {
-    data: data
-  }
+
+Home.propTypes = {
+  updateTheme: PropTypes.func.isRequired
+};
+
+// Override default app theme for this page
+Home.pageTheme = {
+  headerFontColor: "black",
+  headerBackgroundColor: "purple",
+  pageBackgroundColor: "grey",
+  pageFontColor: "white"
+};
+
+Home.getInitialProps = ({req, res}) => {
+  const cookies = new Cookies(req, res);
+  cookies.set('myCookiesName', 'Praksh Acharya', {
+    httpOnly: true
+  })
+
+  let cook = cookies.get('myCookiesName');
+  return {cook};
 }
+
+
+export default Home;
+
+const StyledPage = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: ${({ theme }) => theme.pageBackgroundColor};
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${({ theme }) => theme.pageFontColor};
+  padding: 2em 0;
+`;
+
+const Button = styled.button`
+  outline: none;
+  line-height: 2.5em;
+  font-size: 17px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${({ theme }) => theme.pageFontColor};
+  color: ${({ theme }) => theme.pageFontColor};
+  background-color: ${({ theme }) => theme.pageBackgroundColor};
+  :hover {
+    cursor: pointer;
+    border-color: ${({ theme }) => theme.pageFontHoverColor};
+    color: ${({ theme }) => theme.pageFontHoverColor};
+  }
+`;
+
+const Heading = styled.h2`
+  color: ${({ theme }) => theme.pageFontColor};
+`;

@@ -1,29 +1,37 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
+import appTheme from "utils/theme";
 
-export const useTheme = () => {
-  const[theme, setTheme] = useState('');
-  useEffect(() => {
-    // createScript();
-    const localTheme = window.localStorage.getItem('theme');
-    if(!localTheme) {
-      const darkOs = window.matchMedia("prefers-color-schema").matches ? "light" : "dark";
-      setTheme(darkOs);
-      window.localStorage.setItem('theme', darkOs);
-    } else {
-      setTheme(localTheme);
-    }
-  }, []);
+export default function({Component, router}) {
+  const [dynamicPageThemes, setDynamicPageThemes] = useState([]);
 
-  const themeChange = () => {
-    const nextTheme = theme === "light" ? "dark" : "light";
-    setTheme(nextTheme);
-    window.localStorage.setItem('theme', nextTheme);
-  };
+  const getDynamicPageTheme = () => {
+    const {route} = router;
+    const dynamicPageTheme = dynamicPageThemes.find(
+      pageTheme => pageTheme.route === route
+    );
 
-  return {
-    theme,
-    themeChange
-  };
+    return dynamicPageTheme ? dynamicPageTheme.dynamicTheme : {};
+  }
 
+  const updateTheme = dynamicTheme => {
+    const {route} = router;
+    const pageIndex = dynamicPageThemes.findIndex(page => page.route === route);
+    if (pageIndex === -1) setDynamicPageThemes([...dynamicPageThemes, {route, dynamicTheme}])
+    else dynamicPageThemes[pageIndex] = { route, dynamicTheme };
+
+  }
+
+  const dynamicTheme = getDynamicPageTheme();
+  const {pageTheme} = Component;
+    // _app level theme variables, wrapping the entire layout
+    const theme = {
+      // Theme variables defined in /src/components
+      ...appTheme,
+      // Add any theme variables provided by the page/route level component
+      ...pageTheme,
+      // Override any static page variables with dynamically set variables
+      ...dynamicTheme
+    };
+
+    return {theme, updateTheme}
 }
-
