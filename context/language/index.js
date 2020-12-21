@@ -3,7 +3,7 @@ import {languageContext} from './languagecontext';
 
 import {languageList,languageOptions} from 'utils/language';
 
-export const LanguageState = ({children}) => {
+const LanguageState = ({children}) => {
   const [userLanguage, setUserLanguage] = useState('en');
 
   useEffect(() => {
@@ -33,6 +33,8 @@ export const LanguageState = ({children}) => {
     </languageContext.Provider>
   )
 }
+
+export default LanguageState;
 
 export const Txt = ({txt}) => {
   const langContext = useContext(languageContext);

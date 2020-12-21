@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Cookies from 'cookies'
-import customTheme from "utils/theme/alternatetheme";
+import LanguageChangeBtn from 'components/languagebtn';
 
 const Home = (props) => {
 const { updateTheme } = props;
@@ -13,6 +13,7 @@ const { updateTheme } = props;
       <Link href={`/about`}>
         <a>about page</a>
       </Link>
+      <LanguageChangeBtn />
       <Heading>Select a color to update the theme</Heading>
       <ButtonContainer>
         <Button
@@ -95,7 +96,7 @@ const ButtonContainer = styled.div`
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  width: 100%;
+  width: 90%;
   max-width: 600px;
   border-radius: 8px;
   border-width: 2px;

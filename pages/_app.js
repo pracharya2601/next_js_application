@@ -4,6 +4,8 @@ import { ThemeProvider } from "styled-components";
 import useTheme from 'hooks/useTheme';
 
 import GlobalStyles from "components/GlobalStyles";
+import LanguageState from 'context/language';
+
 import WebsiteLayout from "layout";
 
 
@@ -15,9 +17,11 @@ const AppComponent = ({Component, pageProps, router}) => {
         <>
             <GlobalStyles />
             <ThemeProvider theme={theme}>
+                <LanguageState>
                 <WebsiteLayout>
                     <Component {...pageProps} updateTheme={updateTheme}/>
                 </WebsiteLayout>
+                </LanguageState>
             </ThemeProvider>
         </>
     )
