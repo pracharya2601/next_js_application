@@ -1,67 +1,37 @@
-import App, { Container } from "next/app";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { ThemeProvider } from "styled-components";
-import appTheme from "utils/theme";
+
+import useTheme from 'hooks/useTheme';
+
 import GlobalStyles from "components/GlobalStyles";
 import WebsiteLayout from "layout";
 
-export default class WebApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-    return { pageProps };
-  }
-  state = {
-    dynamicPageThemes: []
-  };
 
-  updateTheme = dynamicTheme => {
-    const { dynamicPageThemes } = this.state;
-    const { route } = this.props.router;
-
-    const pageIndex = dynamicPageThemes.findIndex(page => page.route === route);
-
-    if (pageIndex === -1) dynamicPageThemes.push({ route, dynamicTheme });
-    else dynamicPageThemes[pageIndex] = { route, dynamicTheme };
-
-    this.setState({ dynamicPageThemes });
-  };
-
-  getDynamicPageTheme = () => {
-    const { route } = this.props.router;
-    const { dynamicPageThemes } = this.state;
-    const dynamicPageTheme = dynamicPageThemes.find(
-      pageTheme => pageTheme.route === route
-    );
-
-    return dynamicPageTheme ? dynamicPageTheme.dynamicTheme : {};
-  };
-
-  
-
-  render() {
-    const { Component, pageProps } = this.props;
-    const { pageTheme } = Component;
-    const dynamicTheme = this.getDynamicPageTheme();
-    const theme = {
-      ...appTheme,
-      ...pageTheme,
-      // Override any static page variables with dynamically set variables
-      ...dynamicTheme
-    };
-
-
-    return (
+const AppComponent = ({Component, pageProps, router}) => {
+    const {route} = router;
+    const {pageTheme} = Component;
+    const {theme, updateTheme} = useTheme(route, pageTheme);
+    return(
         <>
-        <GlobalStyles />
-        <ThemeProvider theme={theme}>
-          <WebsiteLayout>
-            <Component {...pageProps} updateTheme={this.updateTheme} />
-          </WebsiteLayout>
-        </ThemeProvider>
+            <GlobalStyles />
+            <ThemeProvider theme={theme}>
+                <WebsiteLayout>
+                    <Component {...pageProps} updateTheme={updateTheme}/>
+                </WebsiteLayout>
+            </ThemeProvider>
         </>
-    );
-  }
+    )
 }
+
+AppComponent.getInitialProps = async ({Component, ctx}) => {
+  let pageProps = {};  
+  if(ctx.req) {
+    if(Component.getInitialProps) {
+        pageProps = await Component.getInitialProps(ctx)
+    }
+    }
+
+    return {pageProps};
+};
+
+export default AppComponent;

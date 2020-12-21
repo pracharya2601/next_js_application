@@ -1,18 +1,19 @@
 import React, {useContext} from "react";
-import Link from 'next/link';
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Cookies from 'cookies'
-import customTheme from "utils/theme/alternatetheme";
 
-const Home = (props) => {
+import {languageContext} from 'context/language/languageprovider';
+
+
+const About = (props) => {
 const { updateTheme } = props;
+// console.log(document.cookies)
+
+console.log(props)
   return (
     <StyledPage>
-      <Link href={`/about`}>
-        <a>about page</a>
-      </Link>
       <Heading>Select a color to update the theme</Heading>
       <ButtonContainer>
         <Button
@@ -55,19 +56,19 @@ const { updateTheme } = props;
 }
 
 
-Home.propTypes = {
+About.propTypes = {
   updateTheme: PropTypes.func.isRequired
 };
 
 // Override default app theme for this page
-Home.pageTheme = {
+About.pageTheme = {
   headerFontColor: "black",
-  headerBackgroundColor: "purple",
-  pageBackgroundColor: "grey",
-  pageFontColor: "white"
+  headerBackgroundColor: "orange",
+  pageBackgroundColor: "orange",
+  pageFontColor: "teal"
 };
 
-Home.getInitialProps = ({req, res}) => {
+About.getInitialProps = ({req, res}) => {
   const cookies = new Cookies(req, res);
   cookies.set('myCookiesName', 'Praksh Acharya', {
     httpOnly: true
@@ -78,7 +79,7 @@ Home.getInitialProps = ({req, res}) => {
 }
 
 
-export default Home;
+export default About;
 
 const StyledPage = styled.div`
   height: 100%;
