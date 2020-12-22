@@ -3,13 +3,16 @@ import Link from 'next/link';
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import Cookies from 'cookies'
 import LanguageChangeBtn from 'components/languagebtn';
+import Navbar from "components/navigationbar";
 
 const Home = (props) => {
 const { updateTheme } = props;
   return (
+    <>
+    <Navbar />
     <StyledPage>
+      
       <Link href={`/about`}>
         <a>about page</a>
       </Link>
@@ -51,7 +54,296 @@ const { updateTheme } = props;
           localStorage.setItem('theme', '')
         }}>reset</Button>
       </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "purple",
+              pageFontColor: "black",
+              pageFontHoverColor: "red"
+            })
+            localStorage.setItem('theme', 'purple')
+          }
+          }
+        >
+          purple
+        </Button>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "green",
+              pageFontColor: "white",
+              pageFontHoverColor: "teal"
+            })
+            localStorage.setItem('theme', 'green')
+          }
+          }
+        >
+          green
+        </Button>
+        <Button onClick={() => {
+          updateTheme({})
+          localStorage.setItem('theme', '')
+        }}>reset</Button>
+      </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "purple",
+              pageFontColor: "black",
+              pageFontHoverColor: "red"
+            })
+            localStorage.setItem('theme', 'purple')
+          }
+          }
+        >
+          purple
+        </Button>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "green",
+              pageFontColor: "white",
+              pageFontHoverColor: "teal"
+            })
+            localStorage.setItem('theme', 'green')
+          }
+          }
+        >
+          green
+        </Button>
+        <Button onClick={() => {
+          updateTheme({})
+          localStorage.setItem('theme', '')
+        }}>reset</Button>
+      </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "purple",
+              pageFontColor: "black",
+              pageFontHoverColor: "red"
+            })
+            localStorage.setItem('theme', 'purple')
+          }
+          }
+        >
+          purple
+        </Button>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "green",
+              pageFontColor: "white",
+              pageFontHoverColor: "teal"
+            })
+            localStorage.setItem('theme', 'green')
+          }
+          }
+        >
+          green
+        </Button>
+        <Button onClick={() => {
+          updateTheme({})
+          localStorage.setItem('theme', '')
+        }}>reset</Button>
+      </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "purple",
+              pageFontColor: "black",
+              pageFontHoverColor: "red"
+            })
+            localStorage.setItem('theme', 'purple')
+          }
+          }
+        >
+          purple
+        </Button>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "green",
+              pageFontColor: "white",
+              pageFontHoverColor: "teal"
+            })
+            localStorage.setItem('theme', 'green')
+          }
+          }
+        >
+          green
+        </Button>
+        <Button onClick={() => {
+          updateTheme({})
+          localStorage.setItem('theme', '')
+        }}>reset</Button>
+      </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "purple",
+              pageFontColor: "black",
+              pageFontHoverColor: "red"
+            })
+            localStorage.setItem('theme', 'purple')
+          }
+          }
+        >
+          purple
+        </Button>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "green",
+              pageFontColor: "white",
+              pageFontHoverColor: "teal"
+            })
+            localStorage.setItem('theme', 'green')
+          }
+          }
+        >
+          green
+        </Button>
+        <Button onClick={() => {
+          updateTheme({})
+          localStorage.setItem('theme', '')
+        }}>reset</Button>
+      </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "purple",
+              pageFontColor: "black",
+              pageFontHoverColor: "red"
+            })
+            localStorage.setItem('theme', 'purple')
+          }
+          }
+        >
+          purple
+        </Button>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "green",
+              pageFontColor: "white",
+              pageFontHoverColor: "teal"
+            })
+            localStorage.setItem('theme', 'green')
+          }
+          }
+        >
+          green
+        </Button>
+        <Button onClick={() => {
+          updateTheme({})
+          localStorage.setItem('theme', '')
+        }}>reset</Button>
+      </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "purple",
+              pageFontColor: "black",
+              pageFontHoverColor: "red"
+            })
+            localStorage.setItem('theme', 'purple')
+          }
+          }
+        >
+          purple
+        </Button>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "green",
+              pageFontColor: "white",
+              pageFontHoverColor: "teal"
+            })
+            localStorage.setItem('theme', 'green')
+          }
+          }
+        >
+          green
+        </Button>
+        <Button onClick={() => {
+          updateTheme({})
+          localStorage.setItem('theme', '')
+        }}>reset</Button>
+      </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "purple",
+              pageFontColor: "black",
+              pageFontHoverColor: "red"
+            })
+            localStorage.setItem('theme', 'purple')
+          }
+          }
+        >
+          purple
+        </Button>
+        <Button
+          onClick={() =>{
+            updateTheme({
+              headerFontColor: "black",
+              headerBackgroundColor: "grey",
+              pageBackgroundColor: "green",
+              pageFontColor: "white",
+              pageFontHoverColor: "teal"
+            })
+            localStorage.setItem('theme', 'green')
+          }
+          }
+        >
+          green
+        </Button>
+        <Button onClick={() => {
+          updateTheme({})
+          localStorage.setItem('theme', '')
+        }}>reset</Button>
+      </ButtonContainer>
     </StyledPage>
+    </>
     )
 }
 
@@ -69,26 +361,23 @@ Home.pageTheme = {
 };
 
 Home.getInitialProps = ({req, res}) => {
-  const cookies = new Cookies(req, res);
-  cookies.set('myCookiesName', 'Praksh Acharya', {
-    httpOnly: true
-  })
+  const i = "I am Prakash"
 
-  let cook = cookies.get('myCookiesName');
-  return {cook};
+  return {i};
 }
 
 
 export default Home;
 
 const StyledPage = styled.div`
-  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   background-color: ${({ theme }) => theme.pageBackgroundColor};
+  position: relative;
+  
 `;
 
 const ButtonContainer = styled.div`

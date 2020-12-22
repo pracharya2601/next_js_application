@@ -16,4 +16,5 @@ export default WebsiteLayout;
 const Layout = styled.div`
   height: 100vh;
   width: 100vw;
+  overflow-y: scroll;
 `;
